@@ -1,7 +1,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(#0b1d33, #1b3b5f);
+  background: #014701;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@ h1 {
 }
 
 .maman {
-  color: #00450a;
+  color: white;
   pulse-animation: pulse 2s infinite;
 }
 
