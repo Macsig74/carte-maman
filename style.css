@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(#0b1d33, #1b3b5f);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'IM Fell', serif;
+  color: white;
+  text-align: center;
+}
+
+/* Contenu central */
+.contenu {
+  z-index: 1;
+  animation: apparition 2s ease;
+}
+
+h1 {
+  font-size: 5em;
+  color: #fe0026;
+  margin: 0;
+}
+
+.maman {
+  color: #00450a;
+  pulse-animation: pulse 2s infinite;
+}
+
+h4 {
+  margin-top: 20px;
+  color: #fe0026;
+  font-size: 2em;
+}
+
+/* Animation douce */
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flocon {
+  position: absolute;
+  top: -20px;
+  color: white;
+  font-size: 20px;
+
+  animation-name: chute;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+  
+@keyframes chute {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.chaussons {
+    width: 200px;
+    margin-top: 50px;
+    animation: rotation 4s linear infinite;
+}
+
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
