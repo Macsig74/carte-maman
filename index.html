@@ -1,22 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyeux noël Maman</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Joyeux Noël Maman</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, #001a33 0%, #014701 100%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'IM Fell English', serif;
+            color: white;
+            text-align: center;
+        }
 
+        /* Guirlande améliorée */
+        .guirlande {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .fil {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #333 5%, #333 95%, transparent 100%);
+        }
+
+        .boule {
+            position: absolute;
+            top: 10px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), inset -5px -5px 10px rgba(0, 0, 0, 0.3);
+            animation: balancer 3s ease-in-out infinite, scintiller 2s infinite;
+        }
+
+        .boule::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: #555;
+        }
+
+        .boule::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            filter: blur(1px);
+        }
+
+        .boule:nth-child(2) { left: 8%; background: radial-gradient(circle at 30% 30%, #ff4444, #cc0000); animation-delay: 0s, 0.3s; }
+        .boule:nth-child(3) { left: 18%; background: radial-gradient(circle at 30% 30%, #ffee44, #ddbb00); animation-delay: 0.5s, 0.6s; }
+        .boule:nth-child(4) { left: 28%; background: radial-gradient(circle at 30% 30%, #44ff44, #00cc00); animation-delay: 1s, 0.9s; }
+        .boule:nth-child(5) { left: 38%; background: radial-gradient(circle at 30% 30%, #4444ff, #0000cc); animation-delay: 1.5s, 1.2s; }
+        .boule:nth-child(6) { left: 48%; background: radial-gradient(circle at 30% 30%, #ff44ff, #cc00cc); animation-delay: 2s, 1.5s; }
+        .boule:nth-child(7) { left: 58%; background: radial-gradient(circle at 30% 30%, #ff8844, #cc4400); animation-delay: 2.5s, 1.8s; }
+        .boule:nth-child(8) { left: 68%; background: radial-gradient(circle at 30% 30%, #ff88ff, #cc44cc); animation-delay: 0.3s, 2.1s; }
+        .boule:nth-child(9) { left: 78%; background: radial-gradient(circle at 30% 30%, #44ffff, #00cccc); animation-delay: 0.8s, 2.4s; }
+        .boule:nth-child(10) { left: 88%; background: radial-gradient(circle at 30% 30%, #ffaa44, #cc6600); animation-delay: 1.3s, 2.7s; }
+
+        @keyframes balancer {
+            0%, 100% { transform: rotate(-3deg) translateY(0); }
+            50% { transform: rotate(3deg) translateY(-5px); }
+        }
+
+        @keyframes scintiller {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            50% { opacity: 0.6; filter: brightness(1.4); }
+        }
+
+        /* Père Noël en traîneau */
+        .traineau {
+            position: fixed;
+            top: 15%;
+            left: -300px;
+            font-size: 80px;
+            z-index: 5;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+            animation: voler 7s linear infinite;
+        }
+
+        @keyframes voler {
+            0% {
+                left: -300px;
+                transform: translateY(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(-5deg);
+            }
+            100% {
+                left: calc(100% + 100px);
+                transform: translateY(0) rotate(-5deg);
+            }
+        }
+
+        /* Contenu central */
+        .contenu {
+            z-index: 1;
+            animation: apparition 2s ease;
+        }
+
+        h1 {
+            font-size: 5em;
+            color: #fe0026;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(254, 0, 38, 0.5);
+        }
+
+        .maman {
+            color: white;
+            animation: pulse 2s infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        h4 {
+            margin-top: 20px;
+            color: #fe0026;
+            font-size: 2em;
+            text-shadow: 0 0 15px rgba(254, 0, 38, 0.3);
+        }
+
+        @keyframes apparition {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .chaussons {
+            width: 200px;
+            margin-top: 50px;
+            animation: rotation 4s linear infinite;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes rotation {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Flocons */
+        .flocon {
+            position: absolute;
+            top: -20px;
+            color: white;
+            font-size: 20px;
+            animation: chute linear forwards;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes chute {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 430px) {
+            h1 { font-size: 2.2em; }
+            h4 { font-size: 1.2em; padding: 0 10px; }
+            .chaussons { width: 150px; margin-top: 20px; }
+            .traineau { font-size: 50px; }
+            .boule { width: 18px; height: 18px; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Guirlande améliorée -->
+    <div class="guirlande">
+        <div class="fil"></div>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+        <span class="boule"></span>
+    </div>
+
+    <!-- Père Noël en traîneau -->
+    <div class="traineau">🎅🦌</div>
+
+    <!-- Contenu central -->
     <div class="contenu">
         <h1>Joyeux Noël</h1>
         <h1 class="maman">Maman</h1>
-        <h4>Pour noël, j'ai décidé de t'offir des chaussons personnalisés</h4>
+        <h4>Pour Noël, j'ai décidé de t'offrir des chaussons personnalisés</h4>
         <img class="chaussons" src="chausson.jpg" alt="Chaussons personnalisés">
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // Création des flocons
+        function creer_flocon() {
+            const flocon = document.createElement('div');
+            flocon.classList.add('flocon');
+            flocon.style.left = Math.random() * 100 + 'vw';
+            flocon.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            flocon.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            flocon.textContent = '❄';
+            document.body.appendChild(flocon);
+            
+            flocon.addEventListener('animationend', function() {
+                flocon.remove();
+            });
+        }
+        
+        setInterval(creer_flocon, 100);
+    </script>
 </body>
 </html>
