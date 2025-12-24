@@ -87,3 +87,26 @@ h4 {
         transform: rotate(360deg);
     }
 }
+
+@media (max-width: 430px) {
+
+  h1 {
+    font-size: 2.2em;
+  }
+
+  p {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+
+  .contenu {
+    width: 100%;
+  }
+
+  .chaussons {
+    width: 150px;
+    margin-top: 20px;
+  }
+
+}
